@@ -1,0 +1,34 @@
+<%- include('../partials/header') %>
+
+<h2>Edit Artist</h2>
+<form id-="edit-form" action="/artists/:id" method="PUT">
+  <label>Name:
+  <input type="text" name="name">
+</label><br>
+<label>Birthday:
+  <input type="text" name="birthday">
+</label><br>
+<label>Hobby:
+  <input type="text" name="hobby">
+</label><br>
+<label>Genre:
+  <select name="genre">
+    <option value="HIP-HOP">HIP-HOP</option>
+    <option value="R&B">R&B</option>
+    <option value="EDM">EDM</option>
+    <option value="COUNTRY">COUNTRY</option>
+    <option value="LATIN">LATIN</option>
+  </select>
+  </label>
+  <label>On Instagram:</label>
+  <input type="checkbox" name="onInstagram" checked>
+    </label>
+<input type="submit" value="Change">
+</form>
+
+
+
+
+
+
+<%- include('../partials/footer') %>

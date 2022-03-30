@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+
+<tr>
+<section id="show-page">
+  <div>name: </div>
+  <div><%= artist.name %></div>
+  <div>Birthday: </div>
+  <div><%= artist.birthday %></div>
+  <div>Genre: </div>
+  <div><%= artist.genre %></div>
+  <div>On Instagram: </div>
+  <div><%= artist.onInstagram ? 'Yes' : 'Nope' %></div>
+  
+  <a href="/artists/<%= artist.id %>/edit">Edit artist</a>
+</section>
+
+
+
+<%- include('../partials/footer') %>

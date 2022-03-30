@@ -1,0 +1,36 @@
+<%- include('../partials/header') %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Birthday</th>
+        <th>Genre</th>
+        <th>Hobby</th>
+        <th>On Instagram</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Write the line of EJS to iterate over movies using forEach -->
+      <% artists.forEach(function(a){ %> 
+        <tr>
+          <td><%= a.name %></td>
+          <td><%= a.birthday%></td>
+          <td><%= a.genre %></td>
+          <td><%= a.hobby %></td>
+          <td><%= a.onInstagram %></td>
+          <td><a href="/artists/<%= a._id %>">DETAILS</a></td>
+          
+            <td>
+              <form action="/artists/<%= a.id %>?_method=DELETE"
+                class="delete-form" method="POST">
+                <button type="submit">X</button>
+              </form>
+              </td>
+
+        
+      
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <%- include('../partials/footer') %>
