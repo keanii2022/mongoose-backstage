@@ -1,6 +1,3 @@
-        const { del } = require('express/lib/application');
-        const { redirect } = require('express/lib/response');
-const { findByIdAndUpdate } = require('../models/artist');
         const Artist = require('../models/artist')
         
         module.exports = {
@@ -21,6 +18,7 @@ const { findByIdAndUpdate } = require('../models/artist');
 
         function show(req, res) {
          Artist.findById(req.params.id, function(err, artist) {
+           console.log(res.locals.user, artist)
             res.render('artists/show', { title: 'Artist Detail', artist});
          })
         }
@@ -35,6 +33,7 @@ const { findByIdAndUpdate } = require('../models/artist');
         for (let key in req.body) {
         if(req.body[key] === '') delete req.body[key]
         }
+        req.body.user = req.user._id
         const artist = new Artist(req.body);
         artist.save(function(err) {
         // one way to handle errors

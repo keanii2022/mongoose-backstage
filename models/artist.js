@@ -14,6 +14,7 @@ const artistSchema = new Schema({
         type: String
     },
     onInstagram:{ type: Boolean },
+    user: { type: Schema.Types.ObjectId, ref: 'User'},
 })
 
 module.exports = mongoose.model('Artist', artistSchema)

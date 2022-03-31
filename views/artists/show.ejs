@@ -1,6 +1,7 @@
 <%- include('../partials/header') %>
 
 <tr>
+  <td>
 <section id="show-page">
   <div>name: </div>
   <div><%= artist.name %></div>
@@ -10,9 +11,13 @@
   <div><%= artist.genre %></div>
   <div>On Instagram: </div>
   <div><%= artist.onInstagram ? 'Yes' : 'Nope' %></div>
-  
-  <a href="/artists/<%= artist.id %>/edit">Edit artist</a>
-</section>
+  <% if (user && user._id.equals(artist.user)) { %>
+    <a href="/artists/<%= artist.id %>/edit">Edit artist</a>
+  <% }%>
+  </section>
+</td>
+</tr>
+
 
 
 
