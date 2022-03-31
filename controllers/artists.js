@@ -53,7 +53,7 @@ const { findByIdAndUpdate } = require('../models/artist');
 
         function edit(req, res) {
           Artist.findById(req.params.id, function(err, artist){
-            res.render('artists/edit', {artist})
+            res.render('artists/edit', {title: 'All Artists', artist})
           })
               }
 
