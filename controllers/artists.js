@@ -1,5 +1,6 @@
         const { del } = require('express/lib/application');
         const { redirect } = require('express/lib/response');
+const { findByIdAndUpdate } = require('../models/artist');
         const Artist = require('../models/artist')
         
         module.exports = {
@@ -9,7 +10,7 @@
         create,
         delete: deleteArtist,
         edit, 
-        // update
+        update
         }
 
         function index(req, res) {
@@ -19,9 +20,9 @@
         }
 
         function show(req, res) {
-        Artist.findById(req.params.id, function(err, artist) {
-        res.render('artists/show', { title: 'Artist Detail', artist});
-        })
+         Artist.findById(req.params.id, function(err, artist) {
+            res.render('artists/show', { title: 'Artist Detail', artist});
+         })
         }
 
         function newArtist(req, res) {
@@ -42,7 +43,7 @@
         res.redirect(`/artists/${artist._id}`);
          });
          }
-         
+
          function deleteArtist(req, res) {
                 Artist.findByIdAndRemove(req.params.id, function(err){
                 console.log(err)
@@ -51,9 +52,21 @@
               }
 
         function edit(req, res) {
-                res.render('artists/edit', {
-                  artist: Artist.findById(req.params.id)
-                });
+          Artist.findById(req.params.id, function(err, artist){
+            res.render('artists/edit', {artist})
+          })
+              }
+
+        function update (req,res) { 
+          req.body.onInstagram = !!req.body.onInstagram;
+          for (let key in req.body) {
+          if(req.body[key] === '') delete req.body[key]
+          }
+          console.log(req.body)
+              Artist.findByIdAndUpdate(req.params.id, req.body, function(err, artist){
+                console.log(err)
+                res.redirect('/artists')
+              })
               }
         
 
