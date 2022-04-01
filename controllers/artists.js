@@ -28,7 +28,6 @@
         }
         
         function create(req,res) {
-        // convert nowShowing's checkbox of nothing or "on" to boolean
         req.body.onInstagram = !!req.body.onInstagram;
         for (let key in req.body) {
         if(req.body[key] === '') delete req.body[key]
@@ -36,9 +35,7 @@
         req.body.user = req.user._id
         const artist = new Artist(req.body);
         artist.save(function(err) {
-        // one way to handle errors
         if (err) return res.render('artists/new');
-        // for now, redirect right back to new.ejs
         res.redirect(`/artists/${artist._id}`);
          });
          }
